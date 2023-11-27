@@ -4,15 +4,15 @@ import { UserService } from './user.service';
 
 @Controller("/user")
 export class UserController {
-  constructor(private readonly appService: UserService) { }
+  constructor(private readonly userService: UserService) { }
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.userService.getHello();
   }
   @Post()
-  postHello(@Req() req: Request): any {
-    return req.body;
+  async postHello(@Req() req: Request) {
+    const result = await this.userService.setData(req.body)
+    return result;
   }
-
 }
