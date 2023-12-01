@@ -12,7 +12,6 @@ export class UserService {
     return 'Hello World!';
   }
   async setData(data: any): Promise<any> {
-    console.log('user', User.modelName)
     return this.userModel.create(data);
   }
 }
