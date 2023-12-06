@@ -4,9 +4,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 @Injectable()
 export class UserService {
-
-
-  constructor(@InjectModel(User.modelName) private readonly userModel: Model<typeof User>) { }
+  constructor(
+    @InjectModel(User.modelName) private readonly userModel: Model<typeof User>,
+  ) {}
 
   getHello(): string {
     return 'Hello World!';

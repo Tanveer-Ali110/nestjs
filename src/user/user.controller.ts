@@ -1,18 +1,23 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { UserService } from './user.service';
 
-@Controller("/user")
+@Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   @Get()
   getHello(): string {
     return this.userService.getHello();
   }
   @Post()
-  async postHello(@Req() req: Request) {
-    const result = await this.userService.setData(req.body)
+  async postHello(@Body() body: any) {
+    const result = await this.userService.setData(body);
     return result;
   }
+  // @Post()
+  // async postHello(@Req() req: Request) {
+  //   const result = await this.userService.setData(req.body)
+  //   return result;
+  // }
 }
