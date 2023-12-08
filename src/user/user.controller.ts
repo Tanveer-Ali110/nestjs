@@ -1,10 +1,9 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
-import { Request } from 'express';
+import { BadRequestException, Body, Controller, Get, HttpException, Post, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
 
   @Get()
   getHello(): string {
@@ -15,9 +14,4 @@ export class UserController {
     const result = await this.userService.setData(body);
     return result;
   }
-  // @Post()
-  // async postHello(@Req() req: Request) {
-  //   const result = await this.userService.setData(req.body)
-  //   return result;
-  // }
 }
