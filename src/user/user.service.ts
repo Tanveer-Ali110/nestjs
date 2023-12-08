@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 export class UserService {
   constructor(
     @InjectModel(User.modelName) private readonly userModel: Model<typeof User>,
-  ) { }
+  ) {}
 
   getHello(): string {
     return 'Hello World!';
