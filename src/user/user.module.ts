@@ -6,7 +6,7 @@ import { User, UserSchema } from '../schema/user.schema';
 import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
-import { jwtSecret } from 'config/constants';
+import { jwtSecret } from '../config/constants';
 
 @Module({
   imports: [
@@ -23,8 +23,8 @@ import { jwtSecret } from 'config/constants';
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
-    }
+    },
   ],
   exports: [UserService],
 })
-export class UserModule { }
+export class UserModule {}
